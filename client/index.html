@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>NodeJS WebSocket Server</title>
+  </head>
+  <body>
+    <h1>Web Socket Chat app</h1>
+    <textarea id="text"></textarea><br />
+    <button id="send">send</button>
+    <script>
+      //when page loads
+      document.addEventListener("DOMContentLoaded", () => {
+        const ws = new WebSocket("ws://localhost:8080");
+
+        //when websocket is connected
+        ws.addEventListener("open", () => {
+          console.log("Client: We are connected");
+
+          //when send is clicked, send data to server
+          const sendButton = document.getElementById("send");
+
+          sendButton.addEventListener("click", () => {
+            const textInput = document.getElementById("text");
+            const textData = textInput.value;
+            console.log(`sent=> ${textData}`);
+
+            ws.send(textData);
+
+            // Clear the textarea after sending
+            textInput.value = "";
+          });
+        });
+
+        ws.addEventListener("message", function (event) {
+          alert(event.data);
+          console.log(event.data);
+        });
+      });
+    </script>
+  </body>
+</html>
