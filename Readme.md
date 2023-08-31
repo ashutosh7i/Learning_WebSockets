@@ -28,7 +28,7 @@ The WebSocket protocol serves two primary purposes:
 
 ## Getting Started with WebSockets in Node.js
 
-To demonstrate WebSocket usage in Node.js, we've provided two files: `server` and `client`.
+To demonstrate WebSocket usage in Node.js, i've made two files: `server` and `client`.
 
 ### Client
 
